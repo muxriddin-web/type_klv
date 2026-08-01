@@ -31,20 +31,20 @@
 
         .setup-container {
             position: relative;
-            width: 100vw; /* To'liq ekran kengligi */
-            height: 100vh; /* To'liq ekran balandligi */
-            max-width: 100%5; /* Agar cheklov kerak bo'lsa 100% qilamiz */
+            width: 100vw;
+            height: 100vh;
+            max-width: 100%;
             max-height: 100vh;
             aspect-ratio: 16 / 9;
             background-image: url('klvimg.jpg');
             background-size: cover;
             background-position: center;
-            border-radius: 0; /* Agar chekkalarida oq fon ko'rinmasin desangiz border-radiusni olib tashlang yoki 0 qiling */
-            box-shadow: none; /* Atrofidagi ortiqcha soyani yo'qotish uchun */
+            border-radius: 0;
+            box-shadow: none;
             overflow: hidden;
         }
 
-        /* --- TO'G'RILANGAN LED CHIROQ (Strelkalarga moslab bo'laklarga bo'lingan va moslashtirilgan) --- */
+        /* --- TO'G'RILANGAN LED CHIROQ --- */
         .setup-led-bar {
             position: absolute;
             bottom: 20.5%;
@@ -59,7 +59,7 @@
             opacity: 0.9;
             border-radius: 4px;
         }
-        /* Shtativ va o'rta qism to'silgan joylar (uzilish zonalari) */
+        
         .led-gap-center {
             position: absolute;
             bottom: 30.5%;
@@ -128,22 +128,22 @@
             align-items: center;
         }
 
-        /* Qora fon ustidagi yozuv uchun uslub */
         .monitor-off-text {
-            color: #00ffcc; /* Matn rangi (xohishga ko'ra o'zgartirishingiz mumkin) */
+            color: #00ffcc;
             font-family: 'Courier New', Courier, monospace;
             font-size: 16px;
             font-weight: bold;
             letter-spacing: 1px;
         }
+        
         .monitor-off-layer.active {
             opacity: 0.98;
         }
 
-        /* --- TO'G'RILANGAN: MONITOR TAGIDAGI RANGLI TUGMALAR VA PULT POZITSIYASI --- */
+        /* --- MONITOR TAGIDAGI RANGLI TUGMALAR --- */
         .color-buttons-panel {
             position: absolute;
-            top: 72%; /* Rasmda ko'rsatilgan qizil ramkaga moslab ko'tarildi */
+            top: 72%;
             left: 37.5%;
             width: 20%;
             height: 6%;
@@ -153,6 +153,7 @@
             z-index: 9;
             gap: 5px;
         }
+        
         .color-btn {
             width: 16px;
             height: 16px;
@@ -160,8 +161,8 @@
             border: 2px solid rgba(255,255,255,0.6);
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            gap: 20px;
         }
+        
         .color-btn:hover {
             transform: scale(1.35);
             box-shadow: 0 0 12px white;
@@ -326,6 +327,37 @@
         .mini-monitor-off-layer.active {
             opacity: 0.98;
         }
+
+        /* --- RESPONSIVLIK (MEDIA QUERIES) --- */
+        @media (max-width: 1024px) {
+            .setup-container {
+                width: 100vw;
+                height: 56.25vw; /* 16:9 nisbatni saqlash uchun */
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+                padding-top: 20px;
+            }
+            .setup-container {
+                width: 95vw;
+                height: 53.4vw;
+            }
+            .monitor-code-overlay {
+                font-size: 9px;
+                padding: 8px;
+            }
+            .color-buttons-panel {
+                width: 30%;
+            }
+            .color-btn {
+                width: 12px;
+                height: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -334,11 +366,9 @@
 
     <div class="setup-container">
         
-        <!-- LED chiroq va uning o'rtadagi tabiiy uzilish qismi -->
         <div class="setup-led-bar" id="setupLedBar"></div>
         <div class="led-gap-center"></div>
 
-        <!-- Monitor ekrani va jonli yoziladigan kod muharriri -->
         <div class="monitor-off-layer" id="monitorOffLayer">
             <span class="monitor-off-text">// System Offline</span>
         </div>
@@ -347,7 +377,6 @@
         </div>
         <div class="interactive-spot" style="top:25.5%; left:27.5%; width:42.3%; height:33.5%; z-index:7;" onclick="toggleMonitor()" title="Monitorni o'chirish/yoqish"></div>
 
-        <!-- TO'G'RILANGAN: Pultdagi rangli tugmalar joylashuvi -->
         <div class="color-buttons-panel">
             <div class="color-btn" style="background-color: #ef4444;" onclick="changeLedColor('#ef4444', 'Qizil')"></div>
             <div class="color-btn" style="background-color: #22c55e;" onclick="changeLedColor('#22c55e', 'Yashil')"></div>
@@ -357,23 +386,17 @@
             <div class="color-btn" style="background-color: #06b6d4;" onclick="changeLedColor('#06b6d4', 'Moviy')"></div>
         </div>
 
-        <!-- 1. Kamera -->
         <div class="interactive-spot camera-spot" onclick="flashCamera()" title="Kamera"></div>
-
-        <!-- 2. Mikrofon -->
         <div class="interactive-spot mic-spot" onclick="toggleMic()" title="Mikrofon"></div>
-
-        <!-- 3. Quloqchin -->
         <div class="interactive-spot headphones-spot" onclick="showToast('Quloqchinlar taqildi 🎧', '🎧')" title="Quloqchin"></div>
 
-        <!-- 4. Sichqoncha -->
         <div class="interactive-spot mouse-spot" onclick="clickMouse()" title="Sichqoncha"></div>
         <div class="mouse-glow" id="mouseGlow"></div>
-        <!-- Kichik monitor qora parda va matn qatlami -->
+        
         <div class="mini-monitor-off-layer" id="miniMonitorOffLayer">
             <span><h1>// You Photo</h1></span>
         </div>
-        <!-- Klaviatura -->
+
         <div class="keyboard-wrapper">
             <div class="keyboard-frame">
                 <div class="main-typing-block">
@@ -532,7 +555,6 @@
     </div>
 
     <script>
-        
         function changeLedColor(colorHex, colorName) {
             document.documentElement.style.setProperty('--led-color', colorHex);
             document.body.style.backgroundColor = colorHex + '15'; 
@@ -590,20 +612,19 @@
             else showToast("Ovoz yozish o'chirildi ⏹️", "⏹️");
         }
 
-
         let isMonitorOff = false;
         const monitorOffLayer = document.getElementById('monitorOffLayer');
-        const miniMonitorOffLayer = document.getElementById('miniMonitorOffLayer'); // Yangi qo'shildi
+        const miniMonitorOffLayer = document.getElementById('miniMonitorOffLayer');
 
-            function toggleMonitor() {
+        function toggleMonitor() {
             isMonitorOff = !isMonitorOff;
             if(isMonitorOff) {
                 monitorOffLayer.classList.add('active');
-                miniMonitorOffLayer.classList.add('active'); // Kichik monitorni qoraytirish
+                miniMonitorOffLayer.classList.add('active');
                 showToast("Monitorlar o'chirildi ⬛", "⬛");
             } else {
                 monitorOffLayer.classList.remove('active');
-                miniMonitorOffLayer.classList.remove('active'); // Kichik monitorni yoqish
+                miniMonitorOffLayer.classList.remove('active');
                 showToast("Monitorlar yoqildi 🖥️", "🖥️");
             }
         }
@@ -627,8 +648,6 @@
                 toast.classList.remove('show');
             }, 2500);
         }
-
-    
     </script>
 </body>
 </html>
