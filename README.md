@@ -85,7 +85,7 @@ Built with optimized JavaScript for smooth interactions and responsive user expe
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/muxriddin-web/interactive-workspace.git
+git clone https://github.com/muxriddin-web/type_klv.git
 ```
 
 ---
@@ -93,7 +93,7 @@ git clone https://github.com/muxriddin-web/interactive-workspace.git
 ## Navigate into the Project
 
 ```bash
-cd interactive-workspace
+cd type_klv
 ```
 
 ---
