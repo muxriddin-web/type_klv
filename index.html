@@ -551,14 +551,14 @@
 
     <div class="toast-notification" id="toastMessage">
         <span id="toastIcon">ℹ️</span>
-        <span id="toastText">Xabar</span>
+        <span id="toastText">Message</span>
     </div>
 
     <script>
         function changeLedColor(colorHex, colorName) {
             document.documentElement.style.setProperty('--led-color', colorHex);
             document.body.style.backgroundColor = colorHex + '15'; 
-            showToast(`LED rangi: ${colorName} ga o'zgartirildi 💡`, "💡");
+            showToast(`LED color changed to: ${colorName} 💡`, "💡");
         }
 
         let typedText = "// Hello! Type on the keyboard...\n";
