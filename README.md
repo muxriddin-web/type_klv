@@ -65,7 +65,7 @@ Built with optimized JavaScript for smooth interactions and responsive user expe
 # 📸 Preview
 
 <div align="center">
-  <a href="https://mfs-portfoliouz.netlify.app/projects">
+  <a href="https://webdesktopvibe.netlify.app">
     <img src="Screenshot_1.png" alt="Checkers Game Demo" width="600"/>
   </a>
   <p><i>Click to watch the demo on my portfolio</i></p>
