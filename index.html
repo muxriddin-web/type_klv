@@ -561,7 +561,7 @@
             showToast(`LED rangi: ${colorName} ga o'zgartirildi 💡`, "💡");
         }
 
-        let typedText = "// Salom! Klavaturada yozing...\n";
+        let typedText = "// Hello! Type on the keyboard...\n";
         const typedCodeEl = document.getElementById('typedCode');
 
         window.addEventListener('keydown', (e) => {
@@ -602,7 +602,7 @@
         function flashCamera() {
             flashOverlay.classList.add('active');
             setTimeout(() => flashOverlay.classList.remove('active'), 120);
-            showToast("Rasmga olindi! 📸", "📸");
+            showToast("Took a picture! 📸", "📸");
         }
 
         let isMicOn = false;
